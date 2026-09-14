@@ -61,7 +61,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
 ul, ol, dl { margin: 0; padding: 0; list-style: none; }
-h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3, h4, p, figure, blockquote { margin: 0; }
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 iframe { border: 0; }
 
@@ -141,7 +141,7 @@ h3 {
 .section-lead.center { margin-inline: auto; text-align: center; }
 
 p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
-.about-copy p, .experience-copy p, .location-info p { color: var(--color-text-soft); }
+.experience-copy p, .location-info p { color: var(--color-text-soft); }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -441,6 +441,65 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
 }
 
 /* =========================================================
+   SABOR — seção de efeito/parallax (inspirada em referência)
+   ========================================================= */
+.sabor {
+  position: relative;
+  background: var(--color-warm);
+  overflow: hidden;
+  padding-block: var(--space-2xl) var(--space-xl);
+  text-align: center;
+}
+.sabor-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+.sabor-word {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 9vw, 3.4rem);
+  line-height: 0.95;
+  color: var(--color-dark);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transform: translateY(var(--py, 0px));
+  will-change: transform;
+}
+.sabor-media { position: relative; width: min(62vw, 320px); flex-shrink: 0; }
+.sabor-disc {
+  position: absolute; inset: 6%;
+  border-radius: 50%;
+  background: var(--color-dark);
+  z-index: 0;
+}
+.sabor-product {
+  position: relative; z-index: 1;
+  width: 100%; height: auto;
+  filter: drop-shadow(0 20px 34px rgba(0,0,0,0.3));
+  transform: translateY(var(--py, 0px)) rotate(-8deg);
+  will-change: transform;
+}
+.sabor-sub {
+  max-width: 56ch;
+  margin: var(--space-xl) auto 0;
+  padding-inline: var(--container-pad);
+  color: var(--color-text-soft);
+  font-size: 1.05rem;
+}
+@media (min-width: 820px) {
+  .sabor { padding-block: var(--space-3xl) var(--space-2xl); }
+  .sabor-inner { flex-direction: row; gap: var(--space-2xl); }
+  .sabor-media { width: min(24vw, 320px); }
+}
+
+/* =========================================================
    MENU / CARDÁPIO
    ========================================================= */
 .menu { background: var(--color-white); padding-bottom: var(--section-pad); }
@@ -523,13 +582,50 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
 @media (min-width: 768px) { .steps { grid-template-columns: repeat(3, 1fr); } }
 
 /* =========================================================
-   SOBRE
+   NOSSA HISTÓRIA
    ========================================================= */
-.about { background: var(--color-white); padding-block: var(--section-pad); }
-.about-inner { display: grid; gap: var(--space-2xl); align-items: center; }
-.about-media { position: relative; }
-.about-media img { border-radius: 22px; box-shadow: 0 24px 40px rgba(33,55,44,0.14); }
-@media (min-width: 900px) { .about-inner { grid-template-columns: 0.85fr 1.15fr; } }
+.historia { background: var(--color-white); padding-block: var(--section-pad); }
+.historia-head { text-align: center; max-width: 640px; }
+.historia-head .eyebrow { text-align: center; }
+.historia-head h2 { margin-inline: auto; }
+
+.historia-people {
+  display: flex; justify-content: center; align-items: flex-start;
+  gap: var(--space-lg); flex-wrap: wrap;
+  margin-top: var(--space-2xl);
+  padding-inline: var(--container-pad);
+}
+.historia-portrait { text-align: center; width: 130px; margin: 0; }
+.historia-portrait img {
+  width: 100%; height: auto;
+  filter: drop-shadow(0 14px 24px rgba(33,55,44,0.18));
+}
+.historia-portrait figcaption {
+  margin-top: var(--space-sm);
+  font-weight: 700; font-size: 0.9rem; color: var(--color-dark);
+}
+
+.historia-body {
+  max-width: 700px;
+  margin: var(--space-2xl) auto 0;
+  display: flex; flex-direction: column; gap: var(--space-lg);
+}
+.historia-body p { font-size: 1.05rem; line-height: 1.75; color: var(--color-text-soft); }
+.historia-body strong { color: var(--color-dark); }
+.historia-quote {
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 600;
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--color-dark);
+  text-align: center;
+  padding-block: var(--space-sm);
+  max-width: 46ch;
+  margin-inline: auto;
+}
+.historia-photo { position: relative; margin-block: var(--space-md); }
+.historia-photo img { width: 100%; border-radius: 20px; box-shadow: 0 24px 40px rgba(33,55,44,0.14); }
+@media (min-width: 640px) { .historia-portrait { width: 190px; } .historia-people { gap: var(--space-xl); } }
 
 /* ---------- Selo de qualidade girando ---------- */
 .quality-seal {

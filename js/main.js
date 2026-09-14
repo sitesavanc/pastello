@@ -70,6 +70,34 @@
     });
   });
 
+  /* Parallax leve na seção "O pastel é Pastello" */
+  var parallaxEls = document.querySelectorAll("[data-parallax]");
+  if (parallaxEls.length && !reduceMotion) {
+    var pTicking = false;
+    var updateParallax = function () {
+      var vh = window.innerHeight;
+      parallaxEls.forEach(function (el) {
+        var speed = parseFloat(el.getAttribute("data-parallax")) || 0;
+        var rect = el.getBoundingClientRect();
+        var centerOffset = (rect.top + rect.height / 2) - vh / 2;
+        var translate = centerOffset * -0.14 * speed;
+        el.style.setProperty("--py", translate.toFixed(1) + "px");
+      });
+      pTicking = false;
+    };
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!pTicking) {
+          requestAnimationFrame(updateParallax);
+          pTicking = true;
+        }
+      },
+      { passive: true }
+    );
+    updateParallax();
+  }
+
   /* Reveal on scroll */
   var revealEls = document.querySelectorAll("[data-reveal]");
   if (reduceMotion || !("IntersectionObserver" in window)) {
