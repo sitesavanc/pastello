@@ -472,7 +472,7 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
   transform: translateY(var(--py, 0px));
   will-change: transform;
 }
-.sabor-media { position: relative; width: min(62vw, 320px); flex-shrink: 0; }
+.sabor-media { position: relative; width: min(78vw, 420px); flex-shrink: 0; }
 .sabor-disc {
   position: absolute; inset: 6%;
   border-radius: 50%;
@@ -496,7 +496,7 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
 @media (min-width: 820px) {
   .sabor { padding-block: var(--space-3xl) var(--space-2xl); }
   .sabor-inner { flex-direction: row; gap: var(--space-2xl); }
-  .sabor-media { width: min(24vw, 320px); }
+  .sabor-media { width: min(32vw, 420px); }
 }
 
 /* =========================================================
@@ -657,6 +657,62 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
 @media (min-width: 900px) { .quality-seal { width: 110px; height: 110px; top: 24px; right: 24px; } .quality-seal-badge { width: 40px; height: 40px; } .quality-seal-badge svg { width: 20px; height: 20px; } }
 
 /* =========================================================
+   O QUE DIZEM DA PASTELLO — depoimentos em loop
+   ========================================================= */
+.testimonials { background: var(--color-white); padding-block: var(--section-pad); overflow: hidden; }
+.testimonials .container { text-align: center; }
+.testimonials h2, .testimonials .section-lead { margin-inline: auto; }
+
+.testimonial-track-wrap {
+  margin-top: var(--space-2xl);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+}
+.testimonial-track {
+  display: flex;
+  gap: var(--space-lg);
+  width: max-content;
+  animation: testimonial-scroll 34s linear infinite;
+}
+.testimonial-track-wrap:hover .testimonial-track { animation-play-state: paused; }
+@keyframes testimonial-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.testimonial-card {
+  flex-shrink: 0;
+  width: 280px;
+  background: var(--color-warm);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.testimonial-quote-mark {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  line-height: 0.6;
+  color: var(--color-accent-dark);
+  margin-bottom: var(--space-md);
+  display: block;
+}
+.testimonial-card p { color: var(--color-text); font-size: 0.96rem; line-height: 1.55; flex: 1; }
+.testimonial-author {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: var(--space-lg);
+  font-weight: 700; font-size: 0.88rem; color: var(--color-dark);
+}
+.testimonial-avatar {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  background: var(--color-dark); color: var(--color-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.95rem;
+}
+@media (min-width: 768px) { .testimonial-card { width: 340px; } }
+
+/* =========================================================
    ONDE ESTAMOS
    ========================================================= */
 .location { background: var(--color-warm); padding-block: var(--section-pad); }
@@ -805,8 +861,9 @@ p { font-size: 1rem; line-height: 1.6; color: var(--color-text-soft); }
   .btn:active { transform: none; }
   .product-card:hover img { transform: none; }
   .hero-product, .steam-line, .trust-card .icon-badge, .quality-seal svg:first-child,
-  .btn-primary.btn-large, .btn-whatsapp {
+  .btn-primary.btn-large, .btn-whatsapp, .testimonial-track {
     animation: none !important;
   }
   .steam { display: none; }
+  .testimonial-track-wrap { overflow-x: auto; }
 }
