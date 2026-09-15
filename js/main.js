@@ -16,6 +16,15 @@
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 
+  /* Logo: clicar sempre volta ao topo da página */
+  var brandLink = document.querySelector(".brand");
+  if (brandLink) {
+    brandLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    });
+  }
+
   /* Menu mobile */
   var hamburger = document.getElementById("hamburger");
   var nav = document.getElementById("main-nav");
@@ -42,6 +51,8 @@
   /* Filtro de categorias do cardápio */
   var filterChips = document.querySelectorAll(".chip[data-filter]");
   var productCards = document.querySelectorAll("#product-grid .product-card");
+  var groupHeadings = document.querySelectorAll("#product-grid .menu-group-heading");
+  var salgadosCats = ["simples", "especiais"];
   filterChips.forEach(function (chip) {
     chip.addEventListener("click", function () {
       filterChips.forEach(function (c) {
@@ -54,6 +65,14 @@
       productCards.forEach(function (card) {
         var show = filter === "todos" || card.getAttribute("data-cat") === filter;
         card.classList.toggle("is-hidden", !show);
+      });
+      groupHeadings.forEach(function (heading) {
+        var group = heading.getAttribute("data-group");
+        var show =
+          filter === "todos" ||
+          (group === "salgados" && salgadosCats.indexOf(filter) !== -1) ||
+          (group === "doces" && filter === "doces");
+        heading.classList.toggle("is-hidden", !show);
       });
     });
   });

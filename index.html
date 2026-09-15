@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.css?v=11">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body>
 
@@ -142,7 +142,6 @@
           <button type="button" class="chip" data-filter="simples" role="tab" aria-selected="false">Simples</button>
           <button type="button" class="chip" data-filter="especiais" role="tab" aria-selected="false">Especiais</button>
           <button type="button" class="chip" data-filter="doces" role="tab" aria-selected="false">Doces</button>
-          <button type="button" class="chip" data-filter="mais" role="tab" aria-selected="false">Mais Delícias</button>
         </div>
       </div>
       <div class="scallop-edge" style="--scallop-color: var(--color-white);" aria-hidden="true"></div>
@@ -150,6 +149,9 @@
 
     <div class="container">
       <div class="product-grid" id="product-grid">
+        <div class="menu-group-heading" data-group="salgados" data-reveal>
+          <h3>Salgados</h3>
+        </div>
         <article class="product-card" data-cat="simples" data-reveal>
           <img src="assets/img/cardapio/carne.webp" alt="Pastel Carne aberto, mostrando o recheio, servido na Pastello" width="900" height="1125" loading="lazy">
           <div class="product-info">
@@ -248,6 +250,9 @@
             <p class="ingredients">Costela desfiada, queijo e cebola caramelizada. Carne macia, queijo derretendo e cebola caramelizada fazendo o trabalho pesado.</p>
           </div>
         </article>
+        <div class="menu-group-heading" data-group="doces" data-reveal>
+          <h3>Doces</h3>
+        </div>
         <article class="product-card" data-cat="doces" data-reveal data-reveal-delay="120">
           <img src="assets/img/cardapio/chocolate-preto.webp" alt="Pastel Chocolate Preto aberto, mostrando o recheio, servido na Pastello" width="900" height="1125" loading="lazy">
           <div class="product-info">
@@ -311,17 +316,6 @@
             <p class="ingredients">Chocolate branco e chocolate preto. Para quem se recusa a escolher apenas um amor.</p>
           </div>
         </article>
-        <article class="product-card" data-cat="mais" data-reveal>
-          <img src="assets/img/cardapio/beijinho.webp" alt="Beijinho da Pastello, docinho de coco" width="900" height="1125" loading="lazy">
-          <div class="product-info">
-            <h3>Beijinho</h3>
-            <p class="ingredients">Cremoso, delicadamente docinho e com aquele sabor de coco que dá vontade de levar mais um pra viagem.</p>
-          </div>
-        </article>
-
-
-
-
       </div>
 
       <div class="menu-cta" data-reveal>
@@ -739,6 +733,6 @@
 </footer>
 
 <script async src="https://www.instagram.com/embed.js"></script>
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=6"></script>
 </body>
 </html>
